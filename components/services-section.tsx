@@ -6,48 +6,49 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const categories = [
   {
-    title: "Frontend",
+    title: "frontend",
     color: "bg-[#FFC224]",
     skills: [
-      { name: "React"},
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "Tailwind CSS"},
-      { name: "JavaScript"},
-    ]
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "JavaScript" },
+      { name: "HTML5 & CSS3" },
+    ],
   },
   {
-    title: "Frontend",
-    color: "bg-[#FFC224]",
+    title: "backend",
+    color: "bg-[#2F81F7]",
     skills: [
-      { name: "React"},
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "Tailwind CSS"},
-      { name: "JavaScript"},
-    ]
+      { name: "Node.js" },
+      { name: "Express" },
+      { name: "Python" },
+      { name: "RESTful APIs" },
+      { name: "Java" },
+      { name: "C" },
+    ],
   },
   {
-    title: "Frontend",
-    color: "bg-[#FFC224]",
+    title: "database",
+    color: "bg-[#00D084]",
     skills: [
-      { name: "React"},
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "Tailwind CSS"},
-      { name: "JavaScript"},
-    ]
+      { name: "MongoDB" },
+      { name: "MySQL" },
+      { name: "Firebase" },
+      { name: "Modelagem de Dados" },
+    ],
   },
   {
-    title: "Frontend",
-    color: "bg-[#FFC224]",
+    title: "general",
+    color: "bg-[#FF4A60]",
     skills: [
-      { name: "React"},
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "Tailwind CSS"},
-      { name: "JavaScript"},
-    ]
+      { name: "Automações em Python" },
+      { name: "Flutter & Dart" },
+      { name: "Análise de Dados" },
+      { name: "LLMs & IA Generativa" },
+      { name: "Git & Git Flow" },
+    ],
   },
 ]
 
@@ -63,7 +64,7 @@ export function ServicesSection() {
   }
 
   return (
-    <section className="bg-background py-16 md:py-24">
+    <section id="tools" className="bg-background py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -128,13 +129,21 @@ export function ServicesSection() {
                     </div>
                     
                     <div className="flex flex-col gap-2 overflow-y-auto overflow-x-hidden pl-5 flex-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
-                      {categorie.skills.map(skill => (
-                        <div key={skill.name} className="flex items-center gap-3 cursor-default opacity-80 hover:opacity-100 hover:translate-x-1 transition-all">
-                          <span className="font-bold tracking-widest text-sm md:text-base">
-                            {skill.name.toUpperCase().replace(' ', '_')}/
-                          </span>
-                        </div>
-                      ))}
+                      {categorie.skills.map(skill => {
+                        const formattedSkill = skill.name
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "") // Remove acentos para formato terminal unix
+                          .toUpperCase()
+                          .replace(/\s+/g, "_") // Substitui todos os espaços por _
+
+                        return (
+                          <div key={skill.name} className="flex items-center gap-3 cursor-default opacity-80 hover:opacity-100 hover:translate-x-1 transition-all">
+                            <span className="font-bold tracking-widest text-sm md:text-base">
+                              {formattedSkill}/
+                            </span>
+                          </div>
+                        )
+                      })}
                     </div>
                     
                     <div className="mt-4 pt-4 border-t-2 border-border/20 flex items-center gap-3 shrink-0 text-sm md:text-base">

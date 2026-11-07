@@ -1,131 +1,167 @@
-import { Mail, Phone } from "lucide-react" 
-import { FaGithub, FaLinkedin,  } from "react-icons/fa"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Image from "next/image"
+"use client"
+
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react"
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa"
 
 export function Footer() {
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
+
   return (
-    <footer className="bg-black text-white py-12 md:py-16">
+    <footer className="bg-foreground text-background pt-16 pb-12 border-t-4 border-border">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                  <Image
-                    src="/images/footer-logo.jpeg"
-                    alt="Paperfolio X Logo"
-                    width={32}
-                    height={32}
-                    className="object-cover"
-                  />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-16">
+            
+            {/* Coluna 1: Perfil & Redes */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#FFC224] text-foreground font-black text-lg flex items-center justify-center rounded-xl border-2 border-background shadow-[3px_3px_0px_0px_var(--color-primary)]">
+                  GA
                 </div>
-                <span className="text-lg md:text-xl font-bold">Paperfolio X</span>
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-background">Gustavo Antunes</h3>
+                  <p className="text-xs text-background/70 font-mono">Dev Fullstack • Louveira, SP</p>
+                </div>
               </div>
-              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                Lorem ipsum dolor amet consecte adipiscing elit. Lectus mattis nunc.
+              
+              <p className="text-background/80 text-sm leading-relaxed">
+                Desenvolvedor com foco em soluções web, mobile, automações com Python e IA generativa para resolver problemas reais.
               </p>
-              <div className="flex gap-3">
+
+              <div className="flex items-center gap-3 pt-2">
                 <a
-                  href="#"
-                  className="w-10 h-10 bg-[#2F81F7] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                  href="https://github.com/antune-ss"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub de Gustavo Antunes"
+                  className="w-10 h-10 bg-background/10 hover:bg-[#2F81F7] text-background hover:text-white border-2 border-background/20 hover:border-background rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                 >
                   <FaGithub className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
-                  className="w-10 h-10 bg-[#FF6B7A] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+                  href="https://linkedin.com/in/gustavoantunesss"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn de Gustavo Antunes"
+                  className="w-10 h-10 bg-background/10 hover:bg-[#0A66C2] text-background hover:text-white border-2 border-background/20 hover:border-background rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                 >
                   <FaLinkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://wa.me/5519999015635"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp de Gustavo Antunes"
+                  className="w-10 h-10 bg-background/10 hover:bg-[#25D366] text-background hover:text-white border-2 border-background/20 hover:border-background rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
                 </a>
               </div>
             </div>
 
+            {/* Coluna 2: Navegação rápida */}
             <div>
-              <h3 className="font-bold mb-4">Pages</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="font-bold text-lg mb-4 text-[#FFC224] font-mono tracking-wider">
+                // NAVEGAÇÃO
+              </h4>
+              <ul className="space-y-2.5 text-sm text-background/80">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Home
+                  <a href="#home" className="hover:text-background hover:translate-x-1 inline-block transition-all">
+                    → Início
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    About
+                  <a href="#about" className="hover:text-background hover:translate-x-1 inline-block transition-all">
+                    → Sobre Mim
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Contact
+                  <a href="#experience" className="hover:text-background hover:translate-x-1 inline-block transition-all">
+                    → Experiência
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Portfolio
+                  <a href="#tools" className="hover:text-background hover:translate-x-1 inline-block transition-all">
+                    → Tecnologias
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Single Project
+                  <a href="#projects" className="hover:text-background hover:translate-x-1 inline-block transition-all">
+                    → Projetos
                   </a>
                 </li>
               </ul>
             </div>
 
+            {/* Coluna 3: Especialidades */}
             <div>
-              <h3 className="font-bold mb-4">Utility Pages</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="font-bold text-lg mb-4 text-[#FF6B7A] font-mono tracking-wider">
+                // STACKS & FOCO
+              </h4>
+              <ul className="space-y-2.5 text-sm text-background/80 font-mono">
+                <li>• Web: React & Next.js</li>
+                <li>• Backend: Node.js & Python</li>
+                <li>• Mobile: Flutter & Dart</li>
+                <li>• Banco: MongoDB & MySQL</li>
+                <li>• Automação: Python & LLMs</li>
+                <li>• Dados & Logística (SPX)</li>
+              </ul>
+            </div>
+
+            {/* Coluna 4: Contato */}
+            <div>
+              <h4 className="font-bold text-lg mb-4 text-[#2F81F7] font-mono tracking-wider">
+                // CONTATO
+              </h4>
+              <ul className="space-y-3.5 text-sm text-background/80">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Style Guide
+                  <a
+                    href="mailto:guantunes567@gmail.com"
+                    className="flex items-center gap-2.5 hover:text-background transition-colors group"
+                  >
+                    <Mail className="w-4 h-4 text-[#FFC224] shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="truncate">guantunes567@gmail.com</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Start Here
+                  <a
+                    href="https://wa.me/5519999015635"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 hover:text-background transition-colors group"
+                  >
+                    <Phone className="w-4 h-4 text-[#00D084] shrink-0 group-hover:scale-110 transition-transform" />
+                    <span>+55 (19) 99901-5635</span>
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Password protected
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Licenses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Changelog
-                  </a>
+                <li className="flex items-center gap-2.5 text-background/70">
+                  <MapPin className="w-4 h-4 text-[#FF4A60] shrink-0" />
+                  <span>Louveira, SP • Brasil</span>
                 </li>
               </ul>
             </div>
 
-            <div>
-              <h3 className="font-bold mb-4">Contact us</h3>
-              <ul className="space-y-3 text-gray-400 text-sm">
-                <li className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <a href="mailto:guantunes567@gmail.com" className="hover:text-white transition-colors">
-                    guantunes567@gmail.com
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <a href="tel:99901-5635" className="hover:text-white transition-colors">
-                    +55 (19) 99901-5635
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>Made by Gustavo Antunes</p>
+          {/* Barra Inferior com Créditos e Botão de Voltar ao Topo */}
+          <div className="border-t border-background/20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs md:text-sm text-background/70">
+            <p>
+              © {new Date().getFullYear()} Gustavo Antunes. Todos os direitos reservados.
+            </p>
+
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-2 bg-background/10 hover:bg-background/20 text-background px-4 py-2 rounded-lg border border-background/20 transition-all hover:-translate-y-0.5 cursor-pointer font-mono"
+            >
+              <span>Voltar ao topo</span>
+              <ArrowUp className="w-4 h-4" />
+            </button>
           </div>
+
         </div>
       </div>
     </footer>
